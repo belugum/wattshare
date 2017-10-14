@@ -29,6 +29,7 @@ carInfo::carInfo()
       while (getline(myfile, key));
       myfile.close();
     }
+  std::cerr << key << std::endl;
   str = "Ocp-Apim-Subscription-Key: " + key;
   this->curl = curl_easy_init();
   this->chunk = curl_slist_append(chunk, str.c_str());
@@ -41,6 +42,8 @@ carInfo::carInfo()
       curl_easy_setopt(curl, CURLOPT_WRITEDATA, &this->readBuffer);
       curl_easy_perform(this->curl);
       curl_easy_cleanup(this->curl);
+      std::cout << this->readBuffer << std::endl;
+      this->data = nlohmann::json::parse(this->readBuffer.c_str());
     }
 }
 
@@ -51,5 +54,6 @@ carInfo::~carInfo()
 
 float	carInfo::getSoc()
 {
-  return (0);
+    //std::cerr << this->data.at("soc").get<std::string>() << std::endl;
+    return (this->data["soc"]["value"]);
 }

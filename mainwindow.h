@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "carInfo.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -18,10 +19,11 @@ public:
 private:
     Ui::MainWindow *ui;
     bool            found;
+    carInfo         info;
 
 public slots:
     void on_search_button_clicked();
-    //void on_identify_
+    //void on_identify_clicked();
     void refresh_data();
 };
 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <curl/curl.h>
+#include "json.hpp"
 
 class			carInfo
 {
@@ -18,6 +19,7 @@ class			carInfo
   CURLcode		res;
   struct curl_slist	*chunk = NULL;
   std::string		readBuffer;
+  nlohmann::json              data;
 public:
   carInfo();
   ~carInfo();

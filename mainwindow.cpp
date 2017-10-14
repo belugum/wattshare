@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->soc->setText("État de charge: " + QString::number(this->info.getSoc()) + "%");
     ui->vehi_found->hide();
     ui->est_time_other->hide();
     ui->identify->hide();
