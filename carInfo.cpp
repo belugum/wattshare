@@ -52,7 +52,7 @@ carInfo::~carInfo()
   
 }
 
-float	carInfo::getSoc()
+int	carInfo::getSoc()
 {
     return (this->data["soc"]["value"]);
 }
@@ -63,7 +63,7 @@ int	carInfo::getRemainingTime()
   int	battery;
 
   battery = 22;
-  time = (this->data["soc"]["value"] * battery) / 100;
+  time = (this->getSoc() * battery) / 100;
   time = (time * 60) / 43;
   return (time);
 }

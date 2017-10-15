@@ -25,6 +25,6 @@ class			carInfo
 public:
   carInfo(std::string);
   ~carInfo();
-  float			getSoc();
+  int			getSoc();
   int			getRemainingTime();
 };

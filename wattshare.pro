@@ -37,3 +37,6 @@ FORMS += \
         mainwindow.ui
 
 LIBS += -lcurl
+
+DISTFILES += \
+    plug.png

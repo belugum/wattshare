@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 #include "carInfo.hpp"
 
 namespace Ui {
@@ -18,8 +19,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    bool            found;
-    carInfo         info;
+    carInfo         *my_info;
+    carInfo         *other_info;
 
 public slots:
     void on_search_button_clicked();
