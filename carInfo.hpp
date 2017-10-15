@@ -5,7 +5,7 @@
 // Login   <zita.cheng@epitech.eu>
 // 
 // Started on  Sat Oct 14 18:09:20 2017 shiba
-// Last update Sat Oct 14 19:22:32 2017 shiba
+// Last update Sun Oct 15 09:28:33 2017 shiba
 //
 
 #include <iostream>
@@ -19,9 +19,12 @@ class			carInfo
   CURLcode		res;
   struct curl_slist	*chunk = NULL;
   std::string		readBuffer;
-  nlohmann::json              data;
-public:
+  nlohmann::json        data;
   carInfo();
+  
+public:
+  carInfo(std::string);
   ~carInfo();
   float			getSoc();
+  int			getRemainingTime();
 };

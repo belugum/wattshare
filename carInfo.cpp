@@ -5,7 +5,7 @@
 // Login   <zita.cheng@epitech.eu>
 // 
 // Started on  Sat Oct 14 18:10:10 2017 shiba
-// Last update Sat Oct 14 20:58:34 2017 shiba
+// Last update Sun Oct 15 09:29:27 2017 shiba
 //
 
 #include "carInfo.hpp"
@@ -16,7 +16,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
   return (size * nmemb);
 }
 
-carInfo::carInfo()
+carInfo::carInfo(std::string name)
 {
   std::string	key;
   std::string	url;
@@ -34,7 +34,7 @@ carInfo::carInfo()
   this->curl = curl_easy_init();
   this->chunk = curl_slist_append(chunk, str.c_str());
   curl_easy_setopt(this->curl, CURLOPT_HTTPHEADER, this->chunk);
-  url = "https://renaultcafeapi.litmus.cloud/hoc/cars/ZoeGrise/data";
+  url = "https://renaultcafeapi.litmus.cloud/hoc/cars/" + name + "/data";
   if(this->curl)
     {
       curl_easy_setopt(this->curl, CURLOPT_URL, url.c_str());
@@ -54,6 +54,16 @@ carInfo::~carInfo()
 
 float	carInfo::getSoc()
 {
-    //std::cerr << this->data.at("soc").get<std::string>() << std::endl;
     return (this->data["soc"]["value"]);
+}
+
+int	carInfo::getRemainingTime()
+{
+  int	time;
+  int	battery;
+
+  battery = 22;
+  time = (this->data["soc"]["value"] * battery) / 100;
+  time = (time * 60) / 43;
+  return (time);
 }
